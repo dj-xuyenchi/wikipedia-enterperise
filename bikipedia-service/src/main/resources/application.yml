@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@10.4.98.14:1521/ebankdev
+    username: EB_DOCKER
+    password: EB_DOCKER
+    driver-class-name: oracle.jdbc.OracleDriver
+
+    # 2. Cấu hình Connection Pool mặc định của Spring Boot (HikariCP)
+    hikari:
+      minimum-idle: 20
+      maximum-pool-size: 200
+      connection-test-query: SELECT 1 FROM DUAL
+
+  # 3. Cấu hình JPA / Hibernate cho Oracle
+  jpa:
+    database-platform: org.hibernate.dialect.OracleDialect
+    hibernate:
+      ddl-auto: none # Chỉ định không tự động tạo/sửa bảng trong DB
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
