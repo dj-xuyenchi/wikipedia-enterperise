@@ -1,0 +1,13 @@
+.login {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 100dvh;
+          .loginForm {
+                    width: 400px;
+                    background-color: #fff;
+                    z-index: 1;
+                    padding: 40px;
+          }
+}
