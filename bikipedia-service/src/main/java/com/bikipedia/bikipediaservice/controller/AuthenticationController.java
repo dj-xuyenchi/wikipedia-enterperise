@@ -1,17 +1,27 @@
 package com.bikipedia.bikipediaservice.controller;
 
+import com.bikipedia.bikipediaservice.dto.authentication.req.LoginRequest;
+import com.bikipedia.bikipediaservice.service.AuthenticationService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/authentication")
+@RequiredArgsConstructor
 public class AuthenticationController {
-    @GetMapping("/login")
+    private final AuthenticationService authenticationService;
+
+    @PostMapping("/login")
 //    @PreAuthorize("hasRole('USER')")
-    public String userAccess() {
-        return "Hello User!";
+    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
+        return ResponseEntity.ok(authenticationService.login(request));
     }
 
+    @PostMapping("/test")
+    @PreAuthorize("hasRole('ADMINs')")
+    public ResponseEntity<?> test() {
+        return ResponseEntity.ok("");
+    }
 }
