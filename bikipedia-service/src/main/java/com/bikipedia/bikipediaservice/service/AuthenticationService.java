@@ -4,5 +4,5 @@ import com.bikipedia.bikipediaservice.dto.authentication.req.LoginRequest;
 import com.bikipedia.bikipediaservice.dto.authentication.res.LoginResponse;
 
 public interface AuthenticationService {
-    LoginResponse login(LoginRequest request);
+    LoginResponse login(LoginRequest request) throws Exception;
 }

@@ -21,10 +21,13 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final JwtTokenProvider jwtTokenProvider;
 
     @Override
-    public LoginResponse login(LoginRequest request) {
+    public LoginResponse login(LoginRequest request) throws Exception {
         WikiUser check = wikiUserRepository.findWikiUserByUserName(request.getUserName());
         if (check == null) {
             return null;
+        }
+        if(!check.getPassword().equals(request.getPassword())){
+            throw new Exception("Sai password");
         }
         Authentication authentication = new UsernamePasswordAuthenticationToken(
                 check,

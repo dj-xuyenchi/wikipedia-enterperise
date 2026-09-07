@@ -14,8 +14,7 @@ public class AuthenticationController {
     private final AuthenticationService authenticationService;
 
     @PostMapping("/login")
-//    @PreAuthorize("hasRole('USER')")
-    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
+    public ResponseEntity<?> login(@RequestBody LoginRequest request) throws Exception {
         return ResponseEntity.ok(authenticationService.login(request));
     }
 
