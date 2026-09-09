@@ -84,7 +84,7 @@ const sections: Section[] = [
       {
         icon: "🔐",
         title: "Đăng xuất",
-        href: "/admin",
+        href: "/login",
       },
     ],
   },

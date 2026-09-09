@@ -9,10 +9,11 @@ import AntdInput from "@/src/component/input/AntdInput";
 import AntdPassword from "@/src/component/input/AntdPassword";
 import AntdButton from "@/src/component/button/AntdButton";
 import { authenticationAPI } from "@/src/api/authenticationAPI";
+import { LoginRequestDTO } from "@/src/dto/authen/req/LoginRequestDTO";
 // import { authApi } from "@/apis/authApi";
 export default function Login() {
   const LANDING = process.env.NEXT_PUBLIC_PRODUCTION_URL;
-  const [loginModel, setLoginModel] = useState({});
+  const [loginModel, setLoginModel] = useState({} as LoginRequestDTO);
   const [stateLogin, setStateLogin] = useState(true);
   const [messageApi, contextHolder] = message.useMessage();
   const [loading, setLoading] = useState(false);
@@ -39,7 +40,7 @@ export default function Login() {
   const handleSetUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLoginModel({
       ...loginModel,
-      email: e.target.value,
+      userName: e.target.value,
     });
   };
   const handleSetPass = (e: React.ChangeEvent<HTMLInputElement>) => {
